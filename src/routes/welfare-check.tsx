@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AlertTriangle, MapPin, PhoneCall } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -82,17 +82,17 @@ function WelfareCheck() {
 
       <div className="shrink-0 space-y-3">
         <Button variant="safe" size="xl" className="h-20 w-full text-2xl" asChild>
-          <a href="/home">I'm OK — cancel</a>
+          <Link to="/home">I'm OK — cancel</Link>
         </Button>
         <Button
           size="xl"
-          className="h-20 w-full bg-white text-2xl text-danger hover:bg-white/90"
+          className="h-20 w-full bg-card text-2xl text-danger hover:bg-card/90"
           asChild
         >
-          <a href="/situation-room">
+          <Link to="/situation-room">
             <PhoneCall className="!size-7" />
             Get help now
-          </a>
+          </Link>
         </Button>
       </div>
     </Screen>
