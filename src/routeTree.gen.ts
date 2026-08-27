@@ -11,8 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactsRouteImport } from './routes/contacts'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as SituationRoomRouteImport } from './routes/situation-room'
 import { Route as WelfareCheckRouteImport } from './routes/welfare-check'
+import { Route as WelfareHistoryRouteImport } from './routes/welfare-history'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,9 +28,24 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactsRoute = ContactsRouteImport.update({
+  id: '/contacts',
+  path: '/contacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyRoute = SafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SituationRoomRoute = SituationRoomRouteImport.update({
+  id: '/situation-room',
+  path: '/situation-room',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WelfareCheckRoute = WelfareCheckRouteImport.update({
@@ -34,39 +53,85 @@ const WelfareCheckRoute = WelfareCheckRouteImport.update({
   path: '/welfare-check',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WelfareHistoryRoute = WelfareHistoryRouteImport.update({
+  id: '/welfare-history',
+  path: '/welfare-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contacts': typeof ContactsRoute
   '/home': typeof HomeRoute
+  '/safety': typeof SafetyRoute
+  '/situation-room': typeof SituationRoomRoute
   '/welfare-check': typeof WelfareCheckRoute
+  '/welfare-history': typeof WelfareHistoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contacts': typeof ContactsRoute
   '/home': typeof HomeRoute
+  '/safety': typeof SafetyRoute
+  '/situation-room': typeof SituationRoomRoute
   '/welfare-check': typeof WelfareCheckRoute
+  '/welfare-history': typeof WelfareHistoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contacts': typeof ContactsRoute
   '/home': typeof HomeRoute
+  '/safety': typeof SafetyRoute
+  '/situation-room': typeof SituationRoomRoute
   '/welfare-check': typeof WelfareCheckRoute
+  '/welfare-history': typeof WelfareHistoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/home' | '/welfare-check'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/contacts'
+    | '/home'
+    | '/safety'
+    | '/situation-room'
+    | '/welfare-check'
+    | '/welfare-history'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/home' | '/welfare-check'
-  id: '__root__' | '/' | '/auth' | '/home' | '/welfare-check'
+  to:
+    | '/'
+    | '/auth'
+    | '/contacts'
+    | '/home'
+    | '/safety'
+    | '/situation-room'
+    | '/welfare-check'
+    | '/welfare-history'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/contacts'
+    | '/home'
+    | '/safety'
+    | '/situation-room'
+    | '/welfare-check'
+    | '/welfare-history'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  ContactsRoute: typeof ContactsRoute
   HomeRoute: typeof HomeRoute
+  SafetyRoute: typeof SafetyRoute
+  SituationRoomRoute: typeof SituationRoomRoute
   WelfareCheckRoute: typeof WelfareCheckRoute
+  WelfareHistoryRoute: typeof WelfareHistoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +150,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contacts': {
+      id: '/contacts'
+      path: '/contacts'
+      fullPath: '/contacts'
+      preLoaderRoute: typeof ContactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home': {
       id: '/home'
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety': {
+      id: '/safety'
+      path: '/safety'
+      fullPath: '/safety'
+      preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/situation-room': {
+      id: '/situation-room'
+      path: '/situation-room'
+      fullPath: '/situation-room'
+      preLoaderRoute: typeof SituationRoomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/welfare-check': {
@@ -99,14 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WelfareCheckRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/welfare-history': {
+      id: '/welfare-history'
+      path: '/welfare-history'
+      fullPath: '/welfare-history'
+      preLoaderRoute: typeof WelfareHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  ContactsRoute: ContactsRoute,
   HomeRoute: HomeRoute,
+  SafetyRoute: SafetyRoute,
+  SituationRoomRoute: SituationRoomRoute,
   WelfareCheckRoute: WelfareCheckRoute,
+  WelfareHistoryRoute: WelfareHistoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
