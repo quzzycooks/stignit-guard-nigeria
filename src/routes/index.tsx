@@ -91,7 +91,7 @@ const slides: Slide[] = [
 function Onboarding() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
-  const slide = slides[index];
+  const slide = slides[index]!;
   const Icon = slide.icon;
   const isLast = index === slides.length - 1;
 
